@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+option go_package = ".;grpc";
+
+service Statis {
+  rpc FindPrimeNum (ArrRequest) returns (ArrResponse) {}
+}
+
+message ArrRequest {
+  string message = 2;
+}
+
+message ArrResponse {
+  string message = 1;
+}
