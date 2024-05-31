@@ -2,6 +2,7 @@ package grpc
 
 import (
 	"context"
+	"fmt"
 	"google.golang.org/grpc"
 	"log"
 	"net"
@@ -13,9 +14,11 @@ type StatisServerr struct {
 }
 
 func (s *StatisServerr) FindPrimeNum(ctx context.Context, in *ArrRequest) (*ArrResponse, error) {
-	var ar *ArrResponse
+	ar := &ArrResponse{}
+	fmt.Println("来了")
 	prime, err := service.GetPrime(in.Message)
 	if err != nil {
+		fmt.Println("调用错误", err)
 		return ar, err
 	}
 	ar.Message = prime
